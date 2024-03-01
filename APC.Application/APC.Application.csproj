@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Auth\Commands\RegisterUser\" />
+    <Folder Include="Tasks\Commands\Create\" />
+    <Folder Include="Tasks\Commands\Delete\" />
+    <Folder Include="Tasks\Commands\" />
+    <Folder Include="Tasks\Commands\Update\" />
+    <Folder Include="Tasks\Queries\GetTask\" />
+    <Folder Include="Tasks\Queries\GetTasks\" />
+    <Folder Include="Users\Commands\Create\" />
+    <Folder Include="Users\Commands\Delete\" />
+    <Folder Include="Users\Commands\Update\" />
+    <Folder Include="Users\Queries\GetUser\" />
+    <Folder Include="Users\Queries\GetUsers\" />
+  </ItemGroup>
+
+</Project>

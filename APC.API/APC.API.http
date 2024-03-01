@@ -1,0 +1,6 @@
+@APC.API_HostAddress = http://localhost:5015
+
+POST {{APC.API_HostAddress}}/api/Auth/Login
+Accept: application/json
+
+###
