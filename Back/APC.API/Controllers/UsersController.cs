@@ -1,7 +1,10 @@
-﻿namespace APC.API.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace APC.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles ="admin")]
     public class UsersController : BaseController
     {
         [HttpGet]
