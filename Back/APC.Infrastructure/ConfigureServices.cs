@@ -11,7 +11,7 @@ namespace APC.Infrastructure
 {
     public static class ConfigureServices
     {
-        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
             services.AddScoped<IApplicationDbContext>(p => p.GetRequiredService<ApplicationDbContext>());
 
