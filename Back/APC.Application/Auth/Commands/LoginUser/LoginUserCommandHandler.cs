@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace APC.Application.Auth.Commands.LoginUser
+﻿namespace APC.Application.Auth.Commands.LoginUser
 {
-    internal class LoginUserCommandHandler
+    public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUserResponseDto>
     {
+        private readonly IApplicationDbContext _ctx;
+        public LoginUserCommandHandler(IApplicationDbContext ctx)
+        {
+            _ctx = ctx;
+        }
+        public Task<LoginUserResponseDto> Handle(LoginUserCommand request, CancellationToken cancellationToken)
+        {
+
+
+            throw new NotImplementedException();
+        }
     }
 }

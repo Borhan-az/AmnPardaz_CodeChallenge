@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace APC.Application.Auth.Commands.LoginUser
 {
-    internal class LoginUserCommand
+    public class LoginUserCommand: IRequest<LoginUserResponseDto>
     {
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }
