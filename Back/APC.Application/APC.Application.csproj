@@ -7,18 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Auth\Commands\RegisterUser\" />
-    <Folder Include="Tasks\Commands\Create\" />
-    <Folder Include="Tasks\Commands\Delete\" />
-    <Folder Include="Tasks\Commands\" />
-    <Folder Include="Tasks\Commands\Update\" />
-    <Folder Include="Tasks\Queries\GetTask\" />
-    <Folder Include="Tasks\Queries\GetTasks\" />
-    <Folder Include="Users\Commands\Create\" />
-    <Folder Include="Users\Commands\Delete\" />
-    <Folder Include="Users\Commands\Update\" />
-    <Folder Include="Users\Queries\GetUser\" />
-    <Folder Include="Users\Queries\GetUsers\" />
+    <Compile Remove="Users\Commands\Update\**" />
+    <Compile Remove="Users\Queries\GetUser\**" />
+    <EmbeddedResource Remove="Users\Commands\Update\**" />
+    <EmbeddedResource Remove="Users\Queries\GetUser\**" />
+    <None Remove="Users\Commands\Update\**" />
+    <None Remove="Users\Queries\GetUser\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\APC.Domain\APC.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\JWT\" />
+    <Folder Include="Common\Security\" />
   </ItemGroup>
 
 </Project>
