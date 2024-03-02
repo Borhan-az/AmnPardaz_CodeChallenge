@@ -2,3 +2,10 @@
 global using Microsoft.AspNetCore.Mvc;
 global using System.Runtime.CompilerServices;
 global using APC.API.Controllers.Common;
+global using APC.Application.Common.Security.Hashing;
+global using APC.Application.Common.JWT;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.IdentityModel.Tokens;
+global using System.Text;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using Microsoft.OpenApi.Models;
