@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace APC.Application.Tasks.Commands.Update
 {
-    public class UpdateTaskResponseDto
+    public class UpdateTaskRequestDto
     {
         public Guid Id { get; set; }
-        public UpdateTaskResponseDto(Guid id)
-        {
-            Id = id;
-        }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }
