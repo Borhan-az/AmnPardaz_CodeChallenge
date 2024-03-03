@@ -4,32 +4,27 @@ namespace APC.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles ="admin")]
+    [Authorize(Roles = "admin")]
     public class UsersController : BaseController
     {
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            return Ok();
+            throw new NotImplementedException();
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser(Guid id)
-        {
-
-            return Ok();
-        }
+        public Task<IActionResult> GetUser(Guid id)
+            => throw new NotImplementedException();
 
         [HttpPost]
-        public async Task<IActionResult> Create()
-        {
-            return Ok();
-        }
+        public Task<IActionResult> Create()
+            => throw new NotImplementedException();
+
 
         [HttpPut]
-        public async Task<IActionResult> Update()
-        {
-            return Ok();
-        }
+        public Task<IActionResult> Update()
+            => throw new NotImplementedException();
+
         [HttpDelete]
         public async Task<IActionResult> Delete()
         {
