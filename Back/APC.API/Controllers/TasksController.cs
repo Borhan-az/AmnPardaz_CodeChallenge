@@ -45,7 +45,7 @@ namespace APC.API.Controllers
             var res = await _mediator.Send(new UpdateTaskCommand(audit, updateTask));
             return Ok(res);
         }
-        [HttpDelete]
+        [HttpDelete("{taskId}")]
         public async Task<IActionResult> Delete(Guid taskId)
         {
             var audit = new AuditDto(GetUserId().Value, GetUserName().Value);

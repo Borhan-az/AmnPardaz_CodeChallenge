@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using APC.Application.Users.Commands.Delete;
+using APC.Application.Users.Queries.GetUsers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APC.API.Controllers
 {
@@ -10,7 +12,8 @@ namespace APC.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            throw new NotImplementedException();
+            var res = await _mediator.Send(new GetAllUsersQuery());
+            return Ok(res);
         }
         [HttpGet("{id}")]
         public Task<IActionResult> GetUser(Guid id)
@@ -25,10 +28,12 @@ namespace APC.API.Controllers
         public Task<IActionResult> Update()
             => throw new NotImplementedException();
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete()
+        [HttpDelete("{userId}")]
+        public async Task<IActionResult> Delete(Guid userId)
         {
-            return Ok();
+            var res = await _mediator.Send(new DeleteUserCommand(userId));
+
+            return Ok(res);
         }
     }
 }
