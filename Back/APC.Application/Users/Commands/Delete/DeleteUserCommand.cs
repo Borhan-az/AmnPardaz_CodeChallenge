@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace APC.Application.Users.Commands.Delete
 {
-    internal class DeleteUserCommand
+    public class DeleteUserCommand : IRequest<Unit>
     {
+        public Guid UserId { get; set; }
+        public DeleteUserCommand(Guid userId)
+        {
+            UserId = userId;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace APC.Application.Users.Queries.GetUsers
 {
-    internal class GetAllUsersQuery
+    public class GetAllUsersQuery : IRequest<List<GetAllUserResponseDto>>
     {
     }
 }
