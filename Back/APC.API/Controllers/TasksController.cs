@@ -1,36 +1,58 @@
-﻿namespace APC.API.Controllers
+﻿using APC.Application.Common.Audit;
+using APC.Application.Tasks.Commands.Create;
+using APC.Application.Tasks.Commands.Delete;
+using APC.Application.Tasks.Commands.Update;
+using APC.Application.Tasks.Queries.GetTask;
+using APC.Application.Tasks.Queries.GetTasks;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+
+namespace APC.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TasksController : BaseController
     {
 
         [HttpGet]
         public async Task<IActionResult> GetTasks()
         {
-            return Ok();
+            var audit = new AuditDto(GetUserId().Value, GetUserName().Value);
+
+            var res = await _mediator.Send(new GetAllTasksQuery(audit));
+            return Ok(res);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTask(Guid id)
         {
-            return Ok();
+            var res = await _mediator.Send(new GetTaskByIdQuery(id));
+            return Ok(res);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTask()
+        public async Task<IActionResult> CreateTask(CreateTaskRequestDto createTask)
         {
-            return Ok();
+            var res = await _mediator.Send(new CreateTaskCommand(GetUserId().Value, createTask));
+            return Ok(res);
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateTask()
+        public async Task<IActionResult> UpdateTask(UpdateTaskRequestDto updateTask)
         {
-            return Ok();
+            var audit = new AuditDto(GetUserId().Value, GetUserName().Value);
+
+            var res = await _mediator.Send(new UpdateTaskCommand(audit, updateTask));
+            return Ok(res);
         }
         [HttpDelete]
-        public async Task<IActionResult> Delete()
+        public async Task<IActionResult> Delete(Guid taskId)
         {
-            return Ok();
+            var audit = new AuditDto(GetUserId().Value, GetUserName().Value);
+
+            var res = await _mediator.Send(new DeleteTaskCommand(taskId, audit.UserId));
+
+            return Ok(res);
         }
 
 
