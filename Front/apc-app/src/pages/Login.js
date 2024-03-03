@@ -22,10 +22,10 @@ function Login() {
 
     const handleSave = () => {
         setIsSaving(true);
-        var em = email 
-        var pas = password 
+        var em = email ;
+        var pas = password ;
 
-        instance.post('/api/auth/login', {
+        instance.post('api/auth/login', {
             username: em,
             password: pas
         })
