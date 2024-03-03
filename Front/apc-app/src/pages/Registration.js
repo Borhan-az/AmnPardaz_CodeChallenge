@@ -1,35 +1,38 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
+import { Link,useNavigate } from "react-router-dom"
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import Layout from "../components/Layout"
 
 
-
 function Registration() {
+    const navigate = useNavigate();
     const [userName, setName] = useState('');
     const [password, setPassword] = useState('')
     const [isSaving, setIsSaving] = useState(false)
-    
+    const instance = axios.create({
+        baseURL: 'https://localhost:7014/',
+    });
     const handleSave = () => {
         setIsSaving(true);
-        axios.post('/api/register', {
+        instance.post('/api/auth/register', {
             userName: userName,
             password: password
           })
           .then(function (response) {
-            localStorage.setItem("user", JSON.stringify(response.data));
             Swal.fire({
                 icon: 'success',
-                title: 'Project saved successfully!',
+                title: 'user registered',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2500
             })
             setIsSaving(false);
             setName('')
             setPassword('')
+            navigate('/')
           })
           .catch(function (error) {
+            console.log(error);
             Swal.fire({
                 icon: 'error',
                 title: 'An Error Occured!',
