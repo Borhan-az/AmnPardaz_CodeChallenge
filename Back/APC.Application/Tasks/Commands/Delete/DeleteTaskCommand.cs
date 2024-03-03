@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace APC.Application.Tasks.Commands.Delete
 {
-    internal class DeleteTaskCommand
+    public class DeleteTaskCommand : IRequest<Unit>
     {
+        public Guid TaskId { get; set; }
+        public Guid UserId { get; set; }
+        public DeleteTaskCommand(Guid taskId, Guid userId)
+        {
+            TaskId = taskId;
+            UserId = userId;
+        }
     }
 }
