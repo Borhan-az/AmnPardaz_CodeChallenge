@@ -33,6 +33,7 @@ builder.Services.AddAuthentication(opt =>
 builder.Services.AddScoped<IApplicationDbContext>(p => p.GetRequiredService<ApplicationDbContext>());
 
 builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("APC_DB"));
+builder.Services.AddScoped<ApplicationDbContextInitializer>();
 builder.Services.AddAuthorization(opt =>
 {
 });
@@ -73,7 +74,11 @@ builder.Services.AddSwaggerGen(c =>
 
 
 var app = builder.Build();
-
+using (var scope = app.Services.CreateScope())
+{
+    var initialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
+    await initialiser.SeedAsync();
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
