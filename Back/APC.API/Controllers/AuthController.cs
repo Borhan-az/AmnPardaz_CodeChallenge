@@ -1,4 +1,5 @@
-﻿using APC.Application.Auth.Commands.RegisterUser;
+﻿using APC.Application.Auth.Commands.LoginUser;
+using APC.Application.Auth.Commands.RegisterUser;
 using APC.Application.Common.JWT;
 
 namespace APC.API.Controllers
@@ -14,13 +15,10 @@ namespace APC.API.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> Login(LoginUserCommand login)
         {
-            Guid guid = Guid.NewGuid();
-            var token = await _token.GenerateToken(guid, "borhan");
-
-
-            return Ok(token);
+            var res = await _mediator.Send(login);
+            return Ok(res.Token);
         }
 
         [HttpPost("Register")]
