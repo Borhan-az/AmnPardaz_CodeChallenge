@@ -7,9 +7,23 @@
         {
             _ctx = ctx;
         }
-        public Task<CreateTaskResponseDto> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
+        public async Task<CreateTaskResponseDto> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            /// TODO : should be add mapster  
+            var task = new Domain.Entities.TodoLists.Todo
+            {
+                Id = Guid.NewGuid(),
+                Title = request.Task.Title,
+                Description = request.Task.Description,
+                UserId = request.UserId
+            };
+            await _ctx.Todos.AddAsync(task);
+
+            if (await _ctx.SaveChangesAsync() > 0)
+                return new CreateTaskResponseDto(task.Id);
+
+            throw new Exception("Internal Error");
+
         }
     }
 }

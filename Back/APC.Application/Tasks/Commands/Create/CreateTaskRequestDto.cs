@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace APC.Application.Tasks.Commands.Create
 {
-    public class CreateTaskResponseDto
+    public class CreateTaskRequestDto
     {
-        public Guid Id { get; set; }
-        public CreateTaskResponseDto(Guid id)
-        {
-            Id = id;
-        }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }
