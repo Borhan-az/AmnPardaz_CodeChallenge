@@ -13,15 +13,16 @@ namespace APC.Application.Auth.Commands.RegisterUser
         }
         public async Task<Unit> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
+            var userExist = _ctx.Users.Where(x => x.UserName.Trim() == request.UserName.Trim()).Any();
+            if (userExist)
+                throw new Exception("User Exist!");
+
             var salt = PasswordHasher.GenerateSalt();
             var hash = PasswordHasher.HashPassword(request.Password, salt);
 
             await _ctx.Users.AddAsync(new Domain.Entities.Users.User(request.UserName, null, Convert.ToBase64String(hash), Convert.ToBase64String(salt)));
-
             await _ctx.SaveChangesAsync();
 
-
-            var get = await _ctx.Users.AsNoTracking().ToListAsync();
             return Unit.Value;
         }
     }
