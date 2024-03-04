@@ -26,6 +26,7 @@ function TaskUpdate() {
         axiosInstance.get(`/api/Tasks/${id}`)
             .then(function (response) {
                 let task = response.data
+                setId(task.id);
                 setName(task.title);
                 setDescription(task.description);
             })

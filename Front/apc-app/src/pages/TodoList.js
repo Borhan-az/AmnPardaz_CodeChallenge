@@ -102,7 +102,7 @@ function TodoList() {
                                             <td>
                                                 <Link
                                                     className="btn btn-outline-success mx-1"
-                                                    to={`/edit/${task.id}`}>
+                                                    to={`/update/${task.id}`}>
                                                     Edit
                                                 </Link>
                                                 <button
