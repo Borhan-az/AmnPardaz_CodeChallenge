@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import TodoList from "./pages/TodoList"
 import UserList from "./pages/UserList"
 import TodoCreate from "./pages/TodoCreate"
-// import TodoUpdate from "./pages/TodoUpdate"
+import TodoUpdate from "./pages/TodoUpdate"
 import Login from "./pages/Login"
 import Registration from "./pages/Registration"
 
@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/dashboard" element={<TodoList />} />
         <Route path="/create" element={<TodoCreate />} />
         <Route path="/users" element={<UserList />} />
-        {/* <Route path="/update/:id" element={<TodoUpdate />} /> */}
+        <Route path="/update/:id" element={<TodoUpdate />} />
       </Routes>
     </Router>
   );
