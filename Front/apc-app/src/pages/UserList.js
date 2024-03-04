@@ -51,7 +51,7 @@ function UserList() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosInstance.delete(`/api/user/${id}`)
+                axiosInstance.delete(`/api/users/${id}`)
                     .then(function (response) {
                         Swal.fire({
                             icon: 'success',
@@ -99,12 +99,13 @@ function UserList() {
                             </thead>
                             <tbody>
                                 {UserList.map((user, key) => {
+                                    console.log(user)
                                     return (
                                         <tr key={key}>
                                             <td>{user.userName}</td>
                                             <td>
                                                 <button
-                                                    onClick={() => handleDelete(user.id)}
+                                                    onClick={() => handleDelete(user.userId)}
                                                     className="btn btn-outline-danger mx-1">
                                                     Delete
                                                 </button>
